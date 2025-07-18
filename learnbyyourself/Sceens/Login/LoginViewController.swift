@@ -126,6 +126,8 @@ class LoginViewController: UIViewController, NibLoadable {
         googleButton.addTarget(self, action: #selector(handleGoogleLogin), for: .touchUpInside)
 
         let facebookButton = makeIconButton(imageName: "facebook_icon")
+        facebookButton.addTarget(self, action: #selector(handleFacebookLogin), for: .touchUpInside)
+        
         let appleButton = makeIconButton(imageName: "apple_icon")
 
         socialButtonsStack.addArrangedSubview(googleButton)
@@ -191,6 +193,10 @@ class LoginViewController: UIViewController, NibLoadable {
     
     @objc private func handleGoogleLogin() {
         viewModel.loginWithGoogle(presentingVC: self)
+    }
+    
+    @objc private func handleFacebookLogin() {
+        viewModel.loginWithFacebook(from: self)
     }
 
 }

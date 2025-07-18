@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02681CEC2E29289000BFDF2F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 02681CEB2E29289000BFDF2F /* GoogleSignIn */; };
+		02759BEB2E2A400F00F0689C /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 02759BEA2E2A400F00F0689C /* FacebookLogin */; };
 		02A1309A2E1D6C4900EAD180 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 02A130992E1D6C4900EAD180 /* FirebaseAuth */; };
 		02A1309C2E1D6C4900EAD180 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 02A1309B2E1D6C4900EAD180 /* FirebaseCrashlytics */; };
 		02A1309E2E1D6C4900EAD180 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 02A1309D2E1D6C4900EAD180 /* FirebaseMessaging */; };
@@ -46,6 +47,7 @@
 			files = (
 				02681CEC2E29289000BFDF2F /* GoogleSignIn in Frameworks */,
 				02A1309E2E1D6C4900EAD180 /* FirebaseMessaging in Frameworks */,
+				02759BEB2E2A400F00F0689C /* FacebookLogin in Frameworks */,
 				02A130A02E1D6C4900EAD180 /* FirebaseStorage in Frameworks */,
 				02A1309A2E1D6C4900EAD180 /* FirebaseAuth in Frameworks */,
 				02A1309C2E1D6C4900EAD180 /* FirebaseCrashlytics in Frameworks */,
@@ -96,6 +98,7 @@
 				02A1309D2E1D6C4900EAD180 /* FirebaseMessaging */,
 				02A1309F2E1D6C4900EAD180 /* FirebaseStorage */,
 				02681CEB2E29289000BFDF2F /* GoogleSignIn */,
+				02759BEA2E2A400F00F0689C /* FacebookLogin */,
 			);
 			productName = learnbyyourself;
 			productReference = 02A1303D2E1D5FBF00EAD180 /* learnbyyourself.app */;
@@ -128,6 +131,7 @@
 			packageReferences = (
 				02A130982E1D6C4900EAD180 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				02681CEA2E29289000BFDF2F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				02759BE92E2A400F00F0689C /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 02A1303E2E1D5FBF00EAD180 /* Products */;
@@ -363,6 +367,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		02759BE92E2A400F00F0689C /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.0;
+			};
+		};
 		02A130982E1D6C4900EAD180 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -378,6 +390,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02681CEA2E29289000BFDF2F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
+		};
+		02759BEA2E2A400F00F0689C /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02759BE92E2A400F00F0689C /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
 		02A130992E1D6C4900EAD180 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

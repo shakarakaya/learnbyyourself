@@ -9,6 +9,8 @@ import UIKit
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
+import FBSDKCoreKit
+
 
 
 @main
@@ -18,17 +20,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         print("CLIENT_ID:", FirebaseApp.app()?.options.clientID ?? "NIL")
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
 
         return true
     }
     
     
-    // iOS 9+ URL açma işlemleri:
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance.handle(url)
+        
+        // Facebook login yönlendirme işlemi
+        let handledByFacebook = ApplicationDelegate.shared.application(app, open: url, options: options)
+        
+        // Google login yönlendirme işlemi
+        let handledByGoogle = GIDSignIn.sharedInstance.handle(url)
+        
+        return handledByFacebook || handledByGoogle
     }
+
     
 
     // MARK: UISceneSession Lifecycle

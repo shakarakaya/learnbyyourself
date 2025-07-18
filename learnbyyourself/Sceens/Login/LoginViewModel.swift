@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FacebookLogin
+import FirebaseAuth
 
 class LoginViewModel {
     
@@ -50,6 +52,31 @@ class LoginViewModel {
                 self?.onAuthSuccess?()
             case .failure(let error):
                 self?.onErrorMessage?(error.localizedDescription)
+            }
+        }
+    }
+    
+    func loginWithFacebook(from viewController: UIViewController) {
+        let manager = LoginManager()
+        manager.logIn(permissions: ["public_profile", "email"], from: viewController) { result, error in
+            if let error = error {
+                print("Facebook login error: \(error.localizedDescription)")
+                return
+            }
+
+            guard let token = AccessToken.current?.tokenString else {
+                print("❌ No Facebook access token")
+                return
+            }
+
+            let credential = FacebookAuthProvider.credential(withAccessToken: token)
+
+            Auth.auth().signIn(with: credential) { authResult, error in
+                if let error = error {
+                    print("Firebase Facebook login error: \(error.localizedDescription)")
+                    return
+                }
+                print("✅ Facebook Firebase login success: \(authResult?.user.uid ?? "unknown")")
             }
         }
     }
